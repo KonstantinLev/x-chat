@@ -11,5 +11,33 @@
 
     <h1>It's Working!</h1>
 
+    <input type="text">
+    <button>Send</button>
+
+    <ul></ul>
+
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        const socket = io()
+
+        document.querySelector('button').addEventListener('click', () => {
+            const input = document.querySelector('input').value
+            socket.emit('createMsg', {input})
+            document.querySelector('input').value = ''
+        })
+
+        socket.on('connect', () => {
+            console.log('client connected')
+        })
+
+        socket.on('newMsg', (msg) => {
+            console.log(msg.text)
+            const li = document.createElement('li')
+            li.innerHTML = `<b>${msg.text}</b> - <i>${msg.date}</i>`
+            document.querySelector('ul').appendChild(li)
+        })
+
+
+    </script>
 </body>
 </html>
