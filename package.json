@@ -1,0 +1,32 @@
+{
+  "name": "x-chat",
+  "version": "1.0.0",
+  "description": "chat wit nodejs,socket-io,vue",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KonstantinLev/x-chat.git"
+  },
+  "keywords": [
+    "nodejs",
+    "socketio",
+    "vuejs",
+    "chat"
+  ],
+  "author": "KonstantinLev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KonstantinLev/x-chat/issues"
+  },
+  "homepage": "https://github.com/KonstantinLev/x-chat#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
