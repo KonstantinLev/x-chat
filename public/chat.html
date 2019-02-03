@@ -14,9 +14,9 @@
     <div id="app">
         <div class="x-chat">
             <div class="x-chat-users collection">
-                <a href="" class="collection-item" v-for="user in 3" :class="{'active': user === 1}">{{user}}</a>
+                <a href="" class="collection-item" v-for="u in users" :class="{'active': u.id === user.id}">{{u.name}}</a>
             </div>
-            <div class="x-chat-messages">
+            <div class="x-chat-messages" ref="messages">
                 <x-chat-message
                     v-for="(m, idx) in messages"
                     :message="m"

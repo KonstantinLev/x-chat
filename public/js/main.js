@@ -20,7 +20,8 @@ new Vue({
         user: {
             name: '',
             room: ''
-        }
+        },
+        users: []
     },
     methods: {
         sendMessage(){
@@ -39,9 +40,17 @@ new Vue({
             })
         },
         initializeConn(){
+
+            socket.on('users:update', users => {
+                this.users = [...users]
+            })
+
             socket.on('msg:new', message => {
                 this.messages.push(message)
+                scrollToBottom(this.$refs.messages)
             })
+
+            scrollToBottom(this.$refs.messages)
         }
     },
     created(){
@@ -62,3 +71,9 @@ new Vue({
         });
     }
 })
+
+function scrollToBottom(node){
+    setTimeout(() => {
+        node.scrollTop = node.scrollHeight
+    })
+}

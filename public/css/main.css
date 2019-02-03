@@ -44,6 +44,7 @@ html, body{
     font-size: 14px;
     margin: 0 0 10px 0;
     max-width: 250px;
+    word-break: break-word;
 }
 .actions{
     border: 1px solid #e0e0e0;
