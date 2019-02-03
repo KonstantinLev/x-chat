@@ -17,16 +17,31 @@
                 <a href="" class="collection-item" v-for="user in 3" :class="{'active': user === 1}">{{user}}</a>
             </div>
             <div class="x-chat-messages">
-                <div class="message" v-for="m in 30" :class="{'owner': m === 3}">
-                    <div class="message-content z-depth-1">Msg: {{m}}</div>
-                </div>
+                <x-chat-message
+                    v-for="(m, idx) in messages"
+                    :message="m"
+                    :user="user"
+                    :key="idx"
+                >
+                </x-chat-message>
             </div>
         </div>
         <div class="actions">
             <div class="input-field">
-                <input type="text" placeholder="Type your message...">
+                <input
+                        type="text"
+                        placeholder="Type your message..."
+                        v-model.trim="message"
+                        autofocus
+                        autocomplete="false"
+                        @keydown.enter="sendMessage"
+                >
             </div>
-            <button class="btn">Send</button>
+            <button
+                    class="btn"
+                    @click="sendMessage"
+                    :disabled="message.length === 0"
+            >Send</button>
         </div>
     </div>
 
